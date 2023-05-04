@@ -1,9 +1,21 @@
 import {useForm} from "react-hook-form";
 import {Button, FloatingLabel, Form} from "react-bootstrap";
+import {sbazarGoodsFetch} from "../../../store/slices/goodsSlice";
+import {FetchSbazarGoodsInputData} from "../../../services/entities/Goods";
+import {useAppDispatch} from "../../../store/store";
 
 const SearchForm = () => {
+    const dispatch = useAppDispatch()
+
     const {register, handleSubmit} = useForm();
-    const onSubmit = (data: any) => console.log(data);
+    const onSubmit = (data: any) => {
+        const payload: FetchSbazarGoodsInputData = {
+            offset: 0,
+            phrase: data.searchValue,
+            limit: 36
+        }
+        dispatch(sbazarGoodsFetch(payload))
+    };
 
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>

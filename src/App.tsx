@@ -3,17 +3,20 @@ import {Container} from "react-bootstrap";
 import Header from "./pages/common/header/Header";
 import SearchForm from "./pages/common/searchForm/SearchForm";
 import HomeImg from "./pages/common/homeImg/HomeImg";
-import ItemsList from "./pages/common/itemsList/ItemsList";
-import {items} from "./services/entities/Items";
+import GoodsList from "./pages/common/itemsList/GoodsList";
+import {useAppSelector} from "./store/store";
+import {LoadingIndicator} from "./components/loadingIndicator/LoadingIndicator";
 
 function App() {
+    const {data, pending} = useAppSelector(state => state.goods)
+
     return (
         <>
+            {pending && <LoadingIndicator/>}
             <Header/>
             <Container>
                 <SearchForm/>
-                <ItemsList data={items} />
-                <HomeImg/>
+                {data.length ? <GoodsList data={data}/> : <HomeImg/>}
             </Container>
         </>
     );

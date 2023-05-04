@@ -1,15 +1,15 @@
 import {Container, Nav, Navbar} from "react-bootstrap";
-import React from "react";
-
+import './Header.scss'
+// import mainLogo from '../../../devdata/imgs/lam.svg'
 const Header = () => {
     return (
-        <Navbar className='mb-5' bg="primary" variant="dark" expand='xxxl'>
+        <Navbar className='mb-5' bg="primary" variant="dark" expand={false}>
             <Container fluid='xxl'>
                 <div>
                     <Navbar.Brand href="/">
                         <img
                             alt=""
-                            // src={require("../../../devdata/imgs/lam.svg")}
+                            // src={mainLogo}
                             width="30"
                             height="30"
                             className="d-inline-block align-top me-3"
@@ -17,9 +17,9 @@ const Header = () => {
                         BAZZAR
                     </Navbar.Brand>
                 </div>
-                <div className='justify-content-end'>
-                    <Navbar.Toggle/>
-                    <Navbar.Collapse>
+                <div className='d-flex justify-content-end'>
+                    <Navbar.Toggle />
+                    <Navbar.Collapse className='navbar-expand order-first'>
                         <Nav>
                             <Nav.Link href="/">Home</Nav.Link>
                             <Nav.Link href="/">Link</Nav.Link>

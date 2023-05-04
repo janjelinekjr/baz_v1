@@ -1,0 +1,38 @@
+.card {
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+  transition: all 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.06);
+  //cursor: pointer;
+}
+
+.sbazar-logo {
+  width: 40%;
+}
+
+.bazos-logo {
+  width: 30%;
+}
+
+.aukro-logo {
+  width: 20%;
+}
+
+.transfer-link:link {
+  text-decoration: none;
+}
+
+.transfer-link:visited {
+  text-decoration: none;
+}
+
+.transfer-link:hover {
+  text-decoration: underline;
+}
+
+.transfer-link:active {
+  text-decoration: underline;
+}
