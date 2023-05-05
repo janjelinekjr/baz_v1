@@ -5,6 +5,13 @@ export enum BazarTypeEnum {
     aukro = 'aukro'
 }
 
+export enum SortEnum {
+    dateAsc = 'dateAsc',
+    dateDesc = 'dateDesc',
+    priceAsc = 'priceAsc',
+    priceDesc = 'priceDesc'
+}
+
 export type Goods = {
     id: number
     name: string
