@@ -6,7 +6,7 @@ import HomeImg from "./pages/common/homeImg/HomeImg";
 import GoodsList from "./pages/common/goodsList/GoodsList";
 import {useAppSelector} from "./store/store";
 import {LoadingIndicator} from "./components/loadingIndicator/LoadingIndicator";
-import AppPagination from "./pages/common/pagination/AppPagination";
+import AppPagination from "./pages/common/appPagination/AppPagination";
 
 function App() {
     const {data, pending} = useAppSelector(state => state.goods)
