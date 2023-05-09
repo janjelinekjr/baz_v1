@@ -1,11 +1,13 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {
+    AukroResultItem,
+    FetchAukroGoodsInputData,
     FetchSbazarGoodsInputData,
     Goods,
     GoodsListType,
     SbazarResultItem
 } from "../../services/entities/Goods";
-import {fetchSbazarGoods} from "../../services/api/goodsApi";
+import {fetchAukroGoods, fetchSbazarGoods} from "../../services/api/goodsApi";
 
 export type GoodsState = {
     data: GoodsListType
@@ -19,6 +21,17 @@ const initialState: GoodsState = {
 
 export const sbazarGoodsFetch = createAsyncThunk<any, FetchSbazarGoodsInputData>('goods/sbazarGoodsFetch', async (input: FetchSbazarGoodsInputData) => {
     return await fetchSbazarGoods(input)
+})
+
+export const aukroGoodsFetch = createAsyncThunk<any, FetchAukroGoodsInputData> ('goods/aukroGoodsFetch', async (input: FetchAukroGoodsInputData) => {
+    const body = {
+        fallbackItemsCount: 12,
+        splitGroupKey: "search",
+        splitGroupValue: null,
+        text: input.text
+    }
+
+    return await fetchAukroGoods(input, body)
 })
 
 const goodsSlice = createSlice({
@@ -52,6 +65,32 @@ const goodsSlice = createSlice({
             newItems.map((item: Goods) => state.data.push(item))
         })
         builder.addCase(sbazarGoodsFetch.rejected, (state) => {
+            state.pending = false
+        })
+
+        builder.addCase(aukroGoodsFetch.pending, (state) => {
+            state.pending = true
+        })
+        builder.addCase(aukroGoodsFetch.fulfilled, (state, action) => {
+            state.pending = false
+            const newItems: GoodsListType = action.payload.data?.content?.map((item: AukroResultItem) => {
+                return {
+                    id: item.itemId,
+                    name: item.itemName,
+                    startTime: item.startingTime,
+                    auction: false,
+                    price: item.price.amount,
+                    titleImg: item.titleImageUrl,
+                    location: {
+                        location: item.location,
+                        region: item.locationRegion.cityName
+                    },
+                    bazar: 'aukro'
+                }
+            })
+            newItems.map((item: Goods) => state.data.push(item))
+        })
+        builder.addCase(aukroGoodsFetch.rejected, (state) => {
             state.pending = false
         })
     }

@@ -1,7 +1,7 @@
 import {useForm} from "react-hook-form";
 import {Button, FloatingLabel, Form} from "react-bootstrap";
-import {sbazarGoodsFetch} from "../../../store/slices/goodsSlice";
-import {FetchSbazarGoodsInputData} from "../../../services/entities/Goods";
+import {aukroGoodsFetch, sbazarGoodsFetch} from "../../../store/slices/goodsSlice";
+import {FetchAukroGoodsInputData, FetchSbazarGoodsInputData} from "../../../services/entities/Goods";
 import {useAppDispatch} from "../../../store/store";
 
 const SearchForm = () => {
@@ -9,12 +9,19 @@ const SearchForm = () => {
 
     const {register, handleSubmit} = useForm();
     const onSubmit = (data: any) => {
-        const payload: FetchSbazarGoodsInputData = {
+        const payloadSbazar: FetchSbazarGoodsInputData = {
             offset: 0,
             phrase: data.searchValue,
             limit: 36
         }
-        dispatch(sbazarGoodsFetch(payload))
+        dispatch(sbazarGoodsFetch(payloadSbazar))
+
+        const payloadAukro: FetchAukroGoodsInputData = {
+            page: 1,
+            size: 60,
+            text: data.searchValue
+        }
+        dispatch(aukroGoodsFetch(payloadAukro))
     };
 
     return (

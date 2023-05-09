@@ -41,9 +41,9 @@ export type FetchSbazarGoodsInputData = {
 
 export type FetchSbazarGoodsOutputResult = {
     pagination: {
-        limit:  number;
+        limit: number;
         offset: number;
-        total:  number;
+        total: number;
     }
     results: Array<SbazarResultItem>
     status_code: number
@@ -115,3 +115,141 @@ export type SbazarResultItem = {
 }
 
 // aukro section
+
+export type FetchAukroGoodsInputData = {
+    page: number,
+    size: number,
+    text: string
+}
+
+export type FetchAukroGoodsInputBody = {
+    fallbackItemsCount: number,
+    splitGroupKey: string,
+    splitGroupValue: null,
+    text: string
+}
+
+export type FetchAukroGoodsOutputResult = {
+    aggregations: Aggregation[]
+    minPrice: number
+    maxPrice: number
+    resultReport: ResultReport
+    fallbackItems: any[]
+    links: any[]
+    content: AukroResultItem[]
+    page: Page
+}
+
+export type Aggregation = {
+    type: string
+    message: string
+    buckets: Bucket[]
+    otherCount: number
+    attributeId?: number
+    attributePosition?: number
+}
+
+export type Bucket = {
+    value: any
+    seoUrl?: string
+    message: string
+    count: number
+    landingPage: boolean
+}
+
+export type ResultReport = {
+    originalText: string
+    excludedCategory: boolean
+    state: string
+    version: string
+    sort: string
+    defaultSort: string
+    sortDirection: string
+    defaultSortDirection: string
+    defaultLayout: string
+    hideAds: boolean
+    provider: string
+}
+
+export type Page = {
+    size: number
+    totalElements: number
+    totalPages: number
+    number: number
+}
+
+export type CategoryPath = {
+    id: number
+    name: string
+    seoUrl: string
+}
+
+export type Attribute = {
+    attributeId: number
+    attributeName: string
+    attributeValue: string
+    attributeValueId?: number
+    position: number
+}
+
+export type AukroResultItem = {
+    itemId: number
+    itemName: string
+    categoryPath: CategoryPath[]
+    startingTime: string
+    endingTime: string
+    buyNowActive: boolean
+    buyNowPrice: {
+        amount: number
+        currency: string
+    }
+    quantity: number
+    quantityType: string
+    attributes?: Attribute[]
+    price: {
+        amount: number
+        currency: string
+    }
+    priceWithShipping: {
+        amount: number
+        currency: string
+    }
+    titleImage: {
+        position: number
+        titleImage: boolean
+        url: string
+        thumbnailReady: boolean
+    }
+    titleImageUrl: string
+    seoUrl: string
+    ppPriorityList: boolean
+    ppHighlight: boolean
+    ppBoldTitle: boolean
+    buyersCountRelative: number
+    itemState: string
+    sellerLogin: string
+    seller: {
+        userId: number
+        showName: string
+        companyAccount: boolean
+        accountActivated: boolean
+    }
+    userWatching: boolean
+    watchersCount: number
+    pepperLevel: number
+    personalPickup: boolean
+    location: string
+    postcode: string
+    aukroFreePriorityList: boolean
+    paymentViaAukro: boolean
+    locationRegion: {
+        cityName: string
+        seoUrl: string
+    }
+    adultContent: boolean
+    aukroPlus: boolean
+    paymentOnline: boolean
+    freeShipping: boolean
+    auction: boolean
+    links: any[]
+}

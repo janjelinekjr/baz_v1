@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {Container} from "react-bootstrap";
 import Header from "./pages/common/header/Header";
 import SearchForm from "./pages/common/searchForm/SearchForm";
-import HomeImg from "./pages/common/homeImg/HomeImg";
 import GoodsList from "./pages/common/goodsList/GoodsList";
 import {useAppSelector} from "./store/store";
 import {LoadingIndicator} from "./components/loadingIndicator/LoadingIndicator";
@@ -28,7 +27,7 @@ function App() {
                         <GoodsList data={currentGoods}/>
                         <AppPagination goodsPerPage={goodsPerPage} totalGoods={data.length} paginate={paginate} currentPage={currentPage} />
                     </>
-                    : <HomeImg/>}
+                    : null}
             </Container>
         </>
     );

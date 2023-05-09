@@ -8,6 +8,9 @@ body {
   margin: 0;
   height: 100%;
   background-color: $light;
+  background-image: url("./devdata/imgs/homeImg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .m-btn {
