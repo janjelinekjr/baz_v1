@@ -7,7 +7,7 @@ import {
 import axios from "axios";
 
 export const fetchSbazarGoods = (data: FetchSbazarGoodsInputData): Promise<FetchSbazarGoodsOutputResult> => {
-    const url = `https://www.sbazar.cz/api/v1/items/search?offset=${data.offset}&sort=-create_date&phrase=${data.phrase}&limit=${data.limit}`
+    const url = `http://localhost:3000/items/search?offset=${data.offset}&sort=-create_date&phrase=${data.phrase}&limit=${data.limit}`
     return axios.get(url)
 }
 

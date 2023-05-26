@@ -1,0 +1,19 @@
+const express = require('express');
+const cors = require('cors')
+const axios = require('axios')
+
+const app = express();
+
+app.use(cors({
+    origin: '*',
+    methods: ["GET", "POST"]
+}))
+
+app.get(':endpoint([\\/\\w\\.-]*)', async (req, res) => {
+    const url = `https://www.sbazar.cz/api/v1${req.url}`
+    const response = await axios.get(url)
+    res.json(response.data)
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`listening on ${PORT}`));
