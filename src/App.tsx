@@ -13,7 +13,7 @@ function App() {
     const [goodsPerPage, setGoodsPerPage] = useState(12)
     const indexOfLastItem = currentPage * goodsPerPage
     const indexOfFirstItem = indexOfLastItem - goodsPerPage
-    const currentGoods = data.slice(indexOfFirstItem, indexOfLastItem)
+
     const paginate = (pageNum: number) => setCurrentPage(pageNum)
 
     return (
@@ -24,7 +24,7 @@ function App() {
                 <SearchForm/>
                 {data.length ?
                     <>
-                        <GoodsList data={currentGoods}/>
+                        <GoodsList data={data} indexOfFirstItem={indexOfFirstItem} indexOfLastItem={indexOfLastItem}/>
                         <AppPagination goodsPerPage={goodsPerPage} totalGoods={data.length} paginate={paginate} currentPage={currentPage} />
                     </>
                     : null}

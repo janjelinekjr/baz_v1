@@ -8,10 +8,12 @@ import aukroLogo from '../../../devdata/imgs/logos/aukro.svg'
 import {useForm} from "react-hook-form";
 
 type GoodsListProps = {
-    data: GoodsListType
+    data: GoodsListType,
+    indexOfLastItem: number,
+    indexOfFirstItem: number
 }
 
-const GoodsList = ({data}: GoodsListProps) => {
+const GoodsList = ({data, indexOfFirstItem, indexOfLastItem}: GoodsListProps) => {
     const {register, watch} = useForm({mode: "onChange"});
     const sortValue = watch('sort')
     const dataForSort = data.slice()
@@ -19,15 +21,15 @@ const GoodsList = ({data}: GoodsListProps) => {
     const getDataWithSort = () => {
         switch (sortValue) {
             case SortEnum.dateAsc:
-                return dataForSort?.sort((date1, date2) => (Number(new Date(date1.startTime)) - Number(new Date(date2.startTime))))
+                return dataForSort?.sort((date1, date2) => (Number(new Date(date1.startTime)) - Number(new Date(date2.startTime)))).slice(indexOfFirstItem, indexOfLastItem)
             case SortEnum.dateDesc:
-                return dataForSort?.sort((date1, date2) => (Number(new Date(date2.startTime)) - Number(new Date(date1.startTime))))
+                return dataForSort?.sort((date1, date2) => (Number(new Date(date2.startTime)) - Number(new Date(date1.startTime)))).slice(indexOfFirstItem, indexOfLastItem)
             case SortEnum.priceAsc:
-                return dataForSort.sort((price1, price2) => price1.price - price2.price)
+                return dataForSort.sort((price1, price2) => price1.price - price2.price).slice(indexOfFirstItem, indexOfLastItem)
             case SortEnum.priceDesc:
-                return dataForSort.sort((price1, price2) => price2.price - price1.price)
+                return dataForSort.sort((price1, price2) => price2.price - price1.price).slice(indexOfFirstItem, indexOfLastItem)
             default:
-                return dataForSort
+                return dataForSort.slice(indexOfFirstItem, indexOfLastItem)
         }
     }
 
