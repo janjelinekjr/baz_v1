@@ -16,12 +16,12 @@ const SearchForm = () => {
         }
         dispatch(sbazarGoodsFetch(payloadSbazar))
 
-        // const payloadAukro: FetchAukroGoodsInputData = {
-        //     page: 1,
-        //     size: 60,
-        //     text: data.searchValue
-        // }
-        // dispatch(aukroGoodsFetch(payloadAukro))
+        const payloadAukro: FetchAukroGoodsInputData = {
+            page: 1,
+            size: 60,
+            text: data.searchValue
+        }
+        dispatch(aukroGoodsFetch(payloadAukro))
     };
 
     return (
