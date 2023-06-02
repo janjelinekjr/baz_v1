@@ -51,7 +51,7 @@ const goodsSlice = createSlice({
                     startTime: item.create_date,
                     auction: false,
                     price: item.price,
-                    titleImg: item.images[0].url,
+                    titleImg: item.images[0]?.url,
                     location: {
                         location: item.locality.municipality,
                         region: item.locality.region
@@ -83,9 +83,10 @@ const goodsSlice = createSlice({
                     titleImg: item.titleImageUrl,
                     location: {
                         location: item.location,
-                        region: item.locationRegion.cityName
+                        region: item.locationRegion?.cityName
                     },
-                    bazar: 'aukro'
+                    bazar: 'aukro',
+                    seo_name: item.seoUrl
                 }
             })
             newItems.map((item: Goods) => state.data.push(item))

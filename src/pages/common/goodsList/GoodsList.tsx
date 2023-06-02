@@ -58,11 +58,12 @@ const GoodsList = ({data, indexOfFirstItem, indexOfLastItem}: GoodsListProps) =>
                                 item.bazar === BazarTypeEnum.aukro ?
                                     <img className='aukro-logo' src={aukroLogo} alt='logo'/> : null
                     const priceResult = (item.price === 0 && !item.price_by_agree) ? 'Zdarma' : item.price_by_agree ? 'Dohodou' : formatAmount(item.price)
+                    const originUrl: string = item.bazar === BazarTypeEnum.sbazar ? `https://www.sbazar.cz/${item.user}/detail/${item.seo_name}` : item.bazar === BazarTypeEnum.aukro ? `https://www.aukro.cz/${item.seo_name}-${item.id}` : ''
 
                     return (
                         <div key={item.id} className='col'>
                             <Card className='card h-100'>
-                                <Card.Img variant="top" src={''}/>
+                                <Card.Img variant="top" className='cards-img' src={item.titleImg}/>
                                 <Card.Body>
                                     <Card.Title>{item.name}</Card.Title>
                                     <Card.Text>
@@ -75,7 +76,7 @@ const GoodsList = ({data, indexOfFirstItem, indexOfLastItem}: GoodsListProps) =>
                                         </div>
                                         <div className='text-center'>
                                             <a className='transfer-link'
-                                               href={`https://www.sbazar.cz/${item.user}/detail/${item.seo_name}`}
+                                               href={originUrl}
                                                target="_blank">
                                                 Přejít na inzerát
                                             </a>
