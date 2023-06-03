@@ -12,11 +12,13 @@ import {fetchAukroGoods, fetchSbazarGoods} from "../../services/api/goodsApi";
 export type GoodsState = {
     data: GoodsListType
     pending: boolean
+    searchValue: string
 }
 
 const initialState: GoodsState = {
     data: [],
-    pending: false
+    pending: false,
+    searchValue: ''
 }
 
 export const sbazarGoodsFetch = createAsyncThunk<any, FetchSbazarGoodsInputData>('goods/sbazarGoodsFetch', async (input: FetchSbazarGoodsInputData) => {
@@ -37,7 +39,14 @@ export const aukroGoodsFetch = createAsyncThunk<any, FetchAukroGoodsInputData> (
 const goodsSlice = createSlice({
     name: 'goods',
     initialState: initialState,
-    reducers: {},
+    reducers: {
+        'setSearchValue': (state, action) => {
+            state.searchValue = action.payload
+        },
+        'clearData': (state) => {
+            state.data = []
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(sbazarGoodsFetch.pending, (state) => {
             state.pending = true
@@ -97,4 +106,5 @@ const goodsSlice = createSlice({
     }
 })
 
+export const {setSearchValue, clearData} = goodsSlice.actions
 export default goodsSlice.reducer

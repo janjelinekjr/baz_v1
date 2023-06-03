@@ -1,5 +1,9 @@
 import {Card, CardGroup, Form} from "react-bootstrap";
-import {BazarTypeEnum, GoodsListType, SortEnum} from "../../../services/entities/Goods";
+import {
+    BazarTypeEnum,
+    GoodsListType,
+    SortEnum
+} from "../../../services/entities/Goods";
 import {formatAmount, formatDate} from "../../../utils/formatUtils";
 import './GoodsList.scss'
 import sbazarLogo from '../../../devdata/imgs/logos/logo-sbazar.svg'
@@ -35,9 +39,9 @@ const GoodsList = ({data, indexOfFirstItem, indexOfLastItem}: GoodsListProps) =>
 
     return (
         <>
-            <div className='d-flex gap-4 align-items-center justify-content-end mt-4'>
-                <Form.Label>Seřadit:</Form.Label>
-                <div>
+            <div className='d-flex justify-content-end mt-4'>
+                <div className='d-flex align-items-center gap-4'>
+                    <Form.Label>Seřadit:</Form.Label>
                     <Form.Select {...register("sort")}>
                         <option>Vybrat řazení</option>
                         <option value={SortEnum.dateDesc}>Od nejnovějšího</option>
