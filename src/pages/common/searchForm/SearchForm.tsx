@@ -12,13 +12,13 @@ const SearchForm = () => {
         const payloadSbazar: FetchSbazarGoodsInputData = {
             offset: 0,
             phrase: data.searchValue,
-            limit: 36
+            limit: 100
         }
         dispatch(sbazarGoodsFetch(payloadSbazar))
 
         const payloadAukro: FetchAukroGoodsInputData = {
             page: 1,
-            size: 60,
+            size: 100,
             text: data.searchValue
         }
         dispatch(aukroGoodsFetch(payloadAukro))
