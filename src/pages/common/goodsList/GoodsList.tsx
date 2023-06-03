@@ -10,6 +10,7 @@ import sbazarLogo from '../../../devdata/imgs/logos/logo-sbazar.svg'
 import bazosLogo from '../../../devdata/imgs/logos/bazos.svg'
 import aukroLogo from '../../../devdata/imgs/logos/aukro.svg'
 import {useForm} from "react-hook-form";
+import {useAppSelector} from "../../../store/store";
 
 type GoodsListProps = {
     data: GoodsListType,
@@ -21,6 +22,7 @@ const GoodsList = ({data, indexOfFirstItem, indexOfLastItem}: GoodsListProps) =>
     const {register, watch} = useForm({mode: "onChange"});
     const sortValue = watch('sort')
     const dataForSort = data.slice()
+    const {totalItemsFound} = useAppSelector(state => state.goods)
 
     const getDataWithSort = () => {
         switch (sortValue) {
@@ -51,6 +53,14 @@ const GoodsList = ({data, indexOfFirstItem, indexOfLastItem}: GoodsListProps) =>
                     </Form.Select>
                 </div>
             </div>
+            <div>
+                <Card className='mt-4'>
+                    <Card.Body>
+                        <p>Celkový počet nalezených položek Sbazar: <span className='total-items-span'>{Number(totalItemsFound.sbazar).toLocaleString('cs-CZ')}</span></p>
+                        <p>Celkový počet nalezených položek Aukro: <span className='total-items-span'>{Number(totalItemsFound.aukro).toLocaleString('cs-CZ')}</span></p>
+                    </Card.Body>
+                </Card>
+            </div>
             <CardGroup
                 className='mt-3 row row-cols-xxl-4 row row-cols-xl-4 row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-1 gx-2 gy-3'>
                 {getDataWithSort()?.map(item => {
@@ -66,7 +76,7 @@ const GoodsList = ({data, indexOfFirstItem, indexOfLastItem}: GoodsListProps) =>
 
                     return (
                         <div key={item.id} className='col'>
-                            <Card className='card h-100'>
+                            <Card className='cards h-100'>
                                 <Card.Img variant="top" className='cards-img' src={item.titleImg}/>
                                 <Card.Body>
                                     <Card.Title>{item.name}</Card.Title>

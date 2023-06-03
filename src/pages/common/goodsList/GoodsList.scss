@@ -1,12 +1,19 @@
-.card {
+@import "../../../variables";
+
+.cards {
   box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
   transition: all 0.4s;
 }
 
-.card:hover {
+.cards:hover {
   transform: translateY(-0.5rem);
   box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.06);
   //cursor: pointer;
+}
+
+.total-items-span {
+  color: $primary;
+  font-weight: bold;
 }
 
 .sbazar-logo {

@@ -13,12 +13,20 @@ export type GoodsState = {
     data: GoodsListType
     pending: boolean
     searchValue: string
+    totalItemsFound: {
+        sbazar: string
+        aukro: string
+    }
 }
 
 const initialState: GoodsState = {
     data: [],
     pending: false,
-    searchValue: ''
+    searchValue: '',
+    totalItemsFound: {
+        sbazar: '',
+        aukro: ''
+    }
 }
 
 export const sbazarGoodsFetch = createAsyncThunk<any, FetchSbazarGoodsInputData>('goods/sbazarGoodsFetch', async (input: FetchSbazarGoodsInputData) => {
@@ -53,6 +61,7 @@ const goodsSlice = createSlice({
         })
         builder.addCase(sbazarGoodsFetch.fulfilled, (state, action) => {
             state.pending = false
+            state.totalItemsFound.sbazar = action.payload.data.pagination.total
             const newItems: GoodsListType = action.payload.data?.results?.map((item: SbazarResultItem) => {
                 return {
                     id: item.id,
@@ -68,7 +77,7 @@ const goodsSlice = createSlice({
                     bazar: 'sbazar',
                     user: item.user.user_service.shop_url,
                     seo_name: item.seo_name,
-                    price_by_agree: item.price_by_agreement
+                    price_by_agree: item.price_by_agreement,
                 }
             })
             newItems.map((item: Goods) => state.data.push(item))
@@ -82,6 +91,7 @@ const goodsSlice = createSlice({
         })
         builder.addCase(aukroGoodsFetch.fulfilled, (state, action) => {
             state.pending = false
+            state.totalItemsFound.aukro = action.payload.data.page.totalElements
             const newItems: GoodsListType = action.payload.data?.content?.map((item: AukroResultItem) => {
                 return {
                     id: item.itemId,
