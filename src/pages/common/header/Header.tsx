@@ -15,11 +15,11 @@ const Header = () => {
                         setSwitchHeader(false)
                     }}>
                         {!switchHeader ? <h3 className={clsx('mb-0', 'd-flex')}>
-                            <Badge>Vele</Badge><span
+                            <Badge className='shadow'>Vele</Badge><span
                             className={clsx('text-primary', 'align-self-end', 'pb-1')}>Bazar</span>
                         </h3> : <h3 className={clsx('mb-0', 'd-flex', 'gap-1')}>
                             <span
-                                className={clsx('text-primary', 'align-self-end', 'pb-1')}>Vele</span><Badge>Bazar</Badge>
+                                className={clsx('text-primary', 'align-self-end', 'pb-1')}>Vele</span><Badge className='shadow'>Bazar</Badge>
                         </h3>
                         }
                     </Navbar.Brand>
