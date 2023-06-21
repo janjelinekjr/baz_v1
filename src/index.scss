@@ -8,9 +8,12 @@ body {
   margin: 0;
   height: 100%;
   background-color: $light;
-  background-image: url("./devdata/imgs/homeImg.png");
-  background-repeat: no-repeat;
-  background-size: cover;
+}
+
+.navbar-nav{
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .m-btn {
