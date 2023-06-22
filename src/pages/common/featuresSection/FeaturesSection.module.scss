@@ -1,0 +1,25 @@
+@import "./../../../variables";
+
+.iconsBgCircle {
+  background-color: $primary;
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: $light;
+  margin-bottom: 1rem;
+}
+
+.featuresDiv {
+  width: 22rem;
+}
+
+.textJustify {
+  text-align: justify;
+}
+
+.underlinePrimary {
+  border-bottom: solid 1.5px $primary;
+}
