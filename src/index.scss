@@ -20,6 +20,16 @@ body {
   width: 12rem;
 }
 
+.btn-outline-hover:hover{
+  color: $light !important;
+}
+
+.top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+}
+
 .home-img {
   box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
   opacity: 60%;
