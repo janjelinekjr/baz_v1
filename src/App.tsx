@@ -38,7 +38,7 @@ function App() {
             <Header/>
             <Container>
                 {showScrollTop &&
-                    <div className={clsx('top-btn')}>
+                    <div className={clsx('top-btn', 'shadow')}>
                         <Button
                             variant={'outline-primary'}
                             className={clsx('btn-outline-hover')}
