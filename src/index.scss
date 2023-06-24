@@ -24,3 +24,7 @@ body {
   box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
   opacity: 60%;
 }
+
+.underline-primary {
+  border-bottom: solid 1.5px $primary;
+}

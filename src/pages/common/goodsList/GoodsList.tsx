@@ -43,7 +43,7 @@ const GoodsList = ({data, indexOfFirstItem, indexOfLastItem}: GoodsListProps) =>
     }
 
     return (
-        <>
+        <div className={clsx('pb-3')}>
             <div className={clsx('d-flex', 'justify-content-end', 'mt-4')}>
                 <div className={clsx('d-flex', 'align-items-center', 'gap-4')}>
                     <Form.Label className={clsx('text-primary', 'mb-0')}>Seřadit:</Form.Label>
@@ -122,7 +122,7 @@ const GoodsList = ({data, indexOfFirstItem, indexOfLastItem}: GoodsListProps) =>
                     )
                 })}
             </CardGroup>
-        </>
+        </div>
     )
 }
 

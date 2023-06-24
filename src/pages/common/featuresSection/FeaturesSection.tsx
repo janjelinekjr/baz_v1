@@ -4,11 +4,11 @@ import styles from './FeaturesSection.module.scss'
 
 function FeaturesSection() {
     return (
-        <div className={'pb-5'}>
-            <div className={clsx('d-flex', 'mt-5', 'justify-content-center', 'gap-5', styles.underlinePrimary, 'pb-3')}>
+        <div className={'pb-3'}>
+            <div className={clsx('d-flex', 'mt-5', 'justify-content-center', 'gap-5', 'pb-3')}>
                 <div className={clsx(styles.featuresDiv, 'text-center')}>
                     <div className={clsx('d-flex', 'justify-content-center')}>
-                        <div className={clsx(styles.iconsBgCircle)}>
+                        <div className={clsx(styles.iconsBgCircle, 'shadow')}>
                             <Search size={25}/>
                         </div>
                     </div>
@@ -21,7 +21,7 @@ function FeaturesSection() {
 
                 <div className={clsx(styles.featuresDiv, 'text-center')}>
                     <div className={clsx('d-flex', 'justify-content-center')}>
-                        <div className={styles.iconsBgCircle}>
+                        <div className={clsx(styles.iconsBgCircle, 'shadow')}>
                             <HourglassSplit size={25}/>
                         </div>
                     </div>
@@ -33,7 +33,7 @@ function FeaturesSection() {
 
                 <div className={clsx(styles.featuresDiv, 'text-center')}>
                     <div className={clsx('d-flex', 'justify-content-center')}>
-                        <div className={styles.iconsBgCircle}>
+                        <div className={clsx(styles.iconsBgCircle, 'shadow')}>
                             <Shop size={25}/>
                         </div>
                     </div>
