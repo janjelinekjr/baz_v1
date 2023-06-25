@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button, Container} from "react-bootstrap";
+import {Button, Container, OverlayTrigger, Tooltip} from "react-bootstrap";
 import Header from "./pages/common/header/Header";
 import SearchForm from "./pages/common/searchForm/SearchForm";
 import GoodsList from "./pages/common/goodsList/GoodsList";
@@ -39,16 +39,19 @@ function App() {
             <Container>
                 {showScrollTop &&
                     <div className={clsx('top-btn', 'shadow')}>
-                        <Button
-                            variant={'outline-primary'}
-                            className={clsx('btn-outline-hover')}
-                            onClick={() => {
-                                document.body.scrollTop = 0;
-                                document.documentElement.scrollTop = 0;
-                            }}
-                        >
-                            <span className={clsx('d-flex', 'align-items-center', 'gap-2',)}><ArrowUpCircleFill size={20}/><span>Nahoru</span></span>
-                        </Button>
+                        <OverlayTrigger overlay={<Tooltip>Nahoru</Tooltip>}>
+                            <Button
+                                variant={'outline-primary'}
+                                className={clsx('btn-outline-hover')}
+                                onClick={() => {
+                                    document.body.scrollTop = 0;
+                                    document.documentElement.scrollTop = 0;
+                                }}
+                            >
+                                <span className={clsx('d-flex', 'align-items-center', 'gap-2',)}><ArrowUpCircleFill
+                                    size={20}/></span>
+                            </Button>
+                        </OverlayTrigger>
                     </div>
                 }
                 <SearchForm/>
