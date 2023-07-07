@@ -87,7 +87,7 @@ const GoodsList = ({data, indexOfFirstItem, indexOfLastItem}: GoodsListProps) =>
                                 <Card.Img variant="top" className={clsx(styles.cardsImg)} src={item.titleImg}/>
                                 <Card.Body className={clsx('d-flex', 'flex-column', 'justify-content-between')}>
                                     <Card.Title className={clsx('text-primary')}>{item.name}</Card.Title>
-                                    <Card.Text>
+                                    <Card.Text as={'div'}>
                                         <div className={clsx('d-flex', 'flex-column', 'gap-3', 'mb-3')}>
                                             <div className={clsx('d-flex', 'justify-content-between', 'mb-2')}>
                                                 <span className={clsx('text-primary')}>Přidáno:</span>
