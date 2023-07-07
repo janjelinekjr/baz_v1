@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import {Button, Container, OverlayTrigger, Tooltip} from "react-bootstrap";
 import Header from "./pages/common/header/Header";
 import SearchForm from "./pages/common/searchForm/SearchForm";
@@ -8,6 +8,7 @@ import {LoadingIndicator} from "./components/loadingIndicator/LoadingIndicator";
 import AppPagination from "./pages/common/appPagination/AppPagination";
 import clsx from "clsx";
 import {ArrowUpCircleFill} from "react-bootstrap-icons";
+import {randomSortArray} from "./utils/arraysUtils";
 
 function App() {
     const {data, pending} = useAppSelector(state => state.goods)
@@ -31,6 +32,10 @@ function App() {
     }
 
     const paginate = (pageNum: number) => setCurrentPage(pageNum)
+
+    const defaultData = useMemo(() => {
+        return randomSortArray(data)
+    }, [data])
 
     return (
         <>
@@ -57,7 +62,7 @@ function App() {
                 <SearchForm/>
                 {data.length ?
                     <>
-                        <GoodsList data={data} indexOfFirstItem={indexOfFirstItem} indexOfLastItem={indexOfLastItem}/>
+                        <GoodsList data={defaultData} indexOfFirstItem={indexOfFirstItem} indexOfLastItem={indexOfLastItem}/>
                         <AppPagination goodsPerPage={goodsPerPage} totalGoods={data.length} paginate={paginate}
                                        currentPage={currentPage}/>
                     </>
