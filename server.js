@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use(cors({
-    origin: '*',
+    origin: 'http://localhost:3000',
     methods: ["GET", "POST", 'PUT', 'PATCH', 'DELETE', 'OPTIONS']
 }))
 
@@ -25,5 +25,5 @@ app.post(':endpoint([\\/\\w\\.-]*)', async (req, res) => {
     res.json(response.data)
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
